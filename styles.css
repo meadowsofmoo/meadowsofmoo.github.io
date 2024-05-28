@@ -37,7 +37,7 @@ body {
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.6);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    animation: bubbles 10s linear infinite;
+    animation: bubbles 5s linear infinite;
     opacity: 0;
 }
 
@@ -45,29 +45,8 @@ body {
     width: 10px;
     height: 10px;
     border-width: 1px;
-    animation-duration: 8s;
+    animation-duration: 4s;
 }
-
-.bubble:nth-child(1) { left: 20%; width: 20px; height: 20px; animation-duration: 8s; animation-delay: 1s; }
-.bubble:nth-child(2) { left: 40%; width: 30px; height: 30px; animation-duration: 12s; animation-delay: 3s; }
-.bubble:nth-child(3) { left: 60%; width: 15px; height: 15px; animation-duration: 10s; animation-delay: 5s; }
-.bubble:nth-child(4) { left: 80%; width: 25px; height: 25px; animation-duration: 14s; animation-delay: 7s; }
-.bubble:nth-child(5) { left: 50%; width: 35px; height: 35px; animation-duration: 11s; animation-delay: 2s; }
-.bubble:nth-child(6) { left: 10%; width: 10px; height: 10px; animation-duration: 6s; animation-delay: 1.5s; }
-.bubble:nth-child(7) { left: 30%; width: 15px; height: 15px; animation-duration: 9s; animation-delay: 2.5s; }
-.bubble:nth-child(8) { left: 70%; width: 25px; height: 25px; animation-duration: 13s; animation-delay: 4.5s; }
-.bubble:nth-child(9) { left: 90%; width: 20px; height: 20px; animation-duration: 10s; animation-delay: 6.5s; }
-.bubble:nth-child(10) { left: 25%; width: 30px; height: 30px; animation-duration: 15s; animation-delay: 3.5s; }
-.bubble:nth-child(11) { left: 45%; width: 18px; height: 18px; animation-duration: 7s; animation-delay: 2s; }
-.bubble:nth-child(12) { left: 65%; width: 22px; height: 22px; animation-duration: 11s; animation-delay: 5s; }
-.bubble:nth-child(13) { left: 85%; width: 12px; height: 12px; animation-duration: 8s; animation-delay: 4s; }
-.bubble:nth-child(14) { left: 15%; width: 16px; height: 16px; animation-duration: 9s; animation-delay: 2.5s; }
-.bubble:nth-child(15) { left: 35%; width: 28px; height: 28px; animation-duration: 14s; animation-delay: 6s; }
-.bubble:nth-child(16) { left: 55%; width: 20px; height: 20px; animation-duration: 10s; animation-delay: 1.5s; }
-.bubble:nth-child(17) { left: 75%; width: 24px; height: 24px; animation-duration: 12s; animation-delay: 5.5s; }
-.bubble:nth-child(18) { left: 95%; width: 18px; height: 18px; animation-duration: 8s; animation-delay: 3s; }
-.bubble:nth-child(19) { left: 5%; width: 14px; height: 14px; animation-duration: 7s; animation-delay: 1s; }
-.bubble:nth-child(20) { left: 50%; width: 30px; height: 30px; animation-duration: 13s; animation-delay: 3s; }
 
 @keyframes bubbles {
     0% {
@@ -88,7 +67,7 @@ body {
     box-shadow: 0 0 35px rgba(0, 0, 0, .25);
     position: relative;
     z-index: 2;
-    backdrop-filter: blur(2.5px); /* Add glass diffusion blur effect */
+    backdrop-filter: blur(4px); /* Add glass diffusion blur effect */
     border: 3px solid transparent; /* Make the border width greater than 0 */
     border-image: linear-gradient(135deg, #8A2BE2, #A020F0, #DA70D6) 1; /* Three-color gradient */
     animation: borderAnimation 15s ease infinite; /* Add animation to the border */ 
@@ -101,6 +80,8 @@ body {
 
 }
 
+
+
 /*Profile Pic */
 .profile img {
     width: 150px;
@@ -109,31 +90,17 @@ body {
     margin-bottom: 20px;
     cursor: pointer;
     border: 3px solid #8A2BE2;
+
 }
 
+/*Profile Text*/
 .profile h1 {
     margin: 10px 0;
     font-size: 32px;
     color: #FFFFFF; /* Change the font color to white */
-    -webkit-text-stroke-width: 1px; /* Set the stroke width */
-    -webkit-text-stroke-color: transparent; /* Make the stroke color transparent initially */
-    animation: rainbowOutline 20s infinite linear; /* Add animation for rainbow outline */
+    text-shadow: -2px -2px 0 #8A2BE2, 2px -2px 0 #8A2BE2, -2px 2px 0 #8A2BE2, 2px 2px 0 #8A2BE2;
+    animation: blurIn 1s forwards; 
 }
-
-@keyframes rainbowOutline {
-    0% { -webkit-text-stroke-color: red; }
-    10% { -webkit-text-stroke-color: orange; }
-    20% { -webkit-text-stroke-color: yellow; }
-    30% { -webkit-text-stroke-color: lime; }
-    40% { -webkit-text-stroke-color: aqua; }
-    50% { -webkit-text-stroke-color: blue; }
-    60% { -webkit-text-stroke-color: purple; }
-    70% { -webkit-text-stroke-color: pink; }
-    80% { -webkit-text-stroke-color: red; }
-    90% { -webkit-text-stroke-color: orange; }
-    100% { -webkit-text-stroke-color: yellow; }
-}
-
 
 /*Link Buttons */
 .links {
@@ -156,78 +123,86 @@ body {
     gap: 10px; /*Distance for Icons and Text*/
     transition: background 0.3s, transform 0.3s, border-color 0.3s; 
     position: relative; 
+    background-color: transparent;
+    
 }
 
 .link-button i {
     font-size: 20px;
+    animation: danceTop 0.5s forwards; 
 }
 
 .link-button.newgrounds {
-    background-color: rgba(255,204,0, 0.75);
+    border: 2.5px solid white;
+    border-color: rgba(255,204,0, 1);
     backdrop-filter: blur(3px);
+    animation: blurIn 1s forwards;
 }
 
 .link-button.newgrounds img {
     width: 25px; /* Adjust the width of the custom icon */
     height: 25px; /* Adjust the height of the custom icon */
     margin-right: 5px; /* Optional: Adjust the spacing between the icon and text */
+    animation: danceTop 0.75s forwards; 
 }
 
 .link-button.newgrounds:hover {
     background-color: rgba(255,204,0, 1);
-    transform: scale(1.05);
+    transform: scale(1.075);
+    content: attr(data-content); 
 }
 
 .link-button.youtube {
-    background-color: rgba(255,0,0, 0.75);
+    border: 2.5px solid white;
+    border-color: rgba(255,0,0, 0.75);
     backdrop-filter: blur(3px);
+    animation: blurIn 1.25s forwards;
 }
 
 .link-button.youtube:hover {
     background-color: rgba(255,0,0, 1);
-    transform: scale(1.05);
+    transform: scale(1.075);
 }
 
 .link-button.soundcloud {
-    background-color: rgba(255,85,0, 0.75);
+    border: 2.5px solid white;
+    border-color: rgba(255,85,0, 0.75);
     backdrop-filter: blur(3px);
+    animation: blurIn 1.5s forwards;
 }
 
 .link-button.soundcloud:hover {
     background-color: rgba(255,85,0, 1);
-    transform: scale(1.05);
+    transform: scale(1.075);
+    
 }
 
 .link-button.twitter {
-    background-color: rgba(29,161,242, 0.75);
+    border: 2.5px solid white;
+    border-color: rgba(29,161,242, 0.75); 
     backdrop-filter: blur(3px);
+    animation: blurIn 1.75s forwards;
 }
 
 .link-button.twitter:hover {
     background-color: rgba(29,161,242, 1);
-    transform: scale(1.05);
+    transform: scale(1.075);
 }
 
 .link-button.spotify {
-    background-color: rgba(30,215,96, 0.75);
+    border: 2.5px solid white;
+    border-color: rgba(30,215,96, 0.75);
     backdrop-filter: blur(3px);
+    animation: blurIn 2s forwards;
 }
 
 .link-button.spotify:hover {
     background-color: rgba(30,215,96, 1);
-    transform: scale(1.05);
+    transform: scale(1.075);
 }
 
 .link-button:active {
-    animation: wiggle 0.3s;
-}
-
-@keyframes wiggle {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(5deg); }
-    50% { transform: rotate(-5deg); }
-    75% { transform: rotate(5deg); }
-    100% { transform: rotate(0deg); }
+    animation: pushRelease 1s forwards; 
 }
 
 /*Profile Pic Spin */
@@ -237,7 +212,7 @@ body {
 }
 
 #profile-pic.spin {
-    animation: spin 0.6s ease-in-out;
+    animation: spin .7s cubic-bezier(.25,.58,0,1.01)
 }
 
 /*Combo Counter */
