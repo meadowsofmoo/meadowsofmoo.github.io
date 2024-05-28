@@ -1,12 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
     const profilePic = document.getElementById('profile-pic');
     const clickSound = document.getElementById('click-sound');
-    const muscSound = document.getElementById('music');
+    const musicSound = document.getElementById('music');
+    const background = document.querySelector('.bubbles');
     let clickCount = 0;
     let lastClickedTime = 0;
 
-    const background = document.querySelector('.bubbles');
+// Bubble Controller
+    function createBubble() {
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
+        bubble.style.left = `${Math.random() * 100}%`;
+        const size = Math.floor(Math.random() * 45) + 10; 
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        background.appendChild(bubble);
+        setTimeout(() => {
+            background.removeChild(bubble);
+        }, 5000); 
+    }
+    setInterval(createBubble, 700); // Lower = More Bubbles
 
+    // Moving Background
     document.addEventListener('mousemove', (event) => {
         const mouseX = event.clientX;
         const mouseY = event.clientY;
@@ -18,14 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const deltaX = mouseX - backgroundCenterX;
         const deltaY = mouseY - backgroundCenterY;
 
-        const moveX = deltaX / -100;
-        const moveY = deltaY / 200;
+        const moveX = deltaX / -200;
+        const moveY = deltaY / 90;
 
         background.style.transform = `translate(${moveX}px, ${moveY}px)`;
     });
 
-   
-// Profile Picture Click
+    // Profile Picture Click
     profilePic.addEventListener('click', (event) => {
         const currentTime = new Date().getTime();
         const timeDiff = currentTime - lastClickedTime;
@@ -47,23 +61,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
 
         createComboCounter(event.clientX, event.clientY, clickCount);
-        
+
 // Change background gradient on every 10 clicks
         if (clickCount % 10 === 0) {
             changeBackgroundGradient();
-            if (muscSound.paused) {
-        muscSound.currentTime = 0;
-        muscSound.play();
-        muscSound.volume = 0.65;
-    }
+            if (musicSound.paused) {
+                musicSound.currentTime = 0;
+                musicSound.play();
+                musicSound.volume = 0.55;
+                profilePic.src = 'pic/john.png';
+
+                setInterval(createBubble, 90); // Adjust the interval for more frequent spawns
+            }
         }
     });
 
     function changeBackgroundGradient() {
-        const colors = generateComplementaryColors();
-        const gradient = `linear-gradient(135deg, ${colors[0]} 10%, ${colors[1]} 100%)`;
-        document.body.style.background = gradient;
-    }
+    const colors = generateComplementaryColors();
+    const gradient = `linear-gradient(135deg, ${colors[0]} 10%, ${colors[1]} 100%)`;
+
+    // Apply animation to the background gradient
+    document.body.style.background = gradient;
+    document.body.style.backgroundSize = '400% 400%'; // Ensure the background size is set
+    document.body.style.animation = 'gradientAnimation 7.5s ease infinite'; // Adjust animation duration and timing function as needed
+}
 
     function generateComplementaryColors() {
         // Generate two random colors
@@ -105,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16);
     }
 
-//Combo Counter
+    // Combo Counter
     function createComboCounter(x, y, count) {
         const counter = document.createElement('div');
         counter.classList.add('combo-counter');
@@ -135,10 +156,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
         requestAnimationFrame(animateCounter);
     }
-
-
-
-
-
-
 });
