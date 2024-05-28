@@ -5,7 +5,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #F768A1 10%, #C868F7 100%);
+    background: linear-gradient(135deg, #7D47F3 10%, #CB085A 100%);
     background-size: 400% 400%;
     animation: gradientAnimation 7.5s ease infinite;
     font-family: 'Noto Sans', sans-serif;
