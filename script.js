@@ -1,80 +1,97 @@
 document.addEventListener('DOMContentLoaded', () => {
     const profilePic = document.getElementById('profile-pic');
+    profilePic.setAttribute('draggable', 'false');
     const clickSound = document.getElementById('click-sound');
     const musicSound = document.getElementById('music');
     const background = document.querySelector('.bubbles');
     let clickCount = 0;
     let lastClickedTime = 0;
+    let highestCombo = localStorage.getItem('highestCombo') ? parseInt(localStorage.getItem('highestCombo'), 10) : 0;
 
 // Bubble Controller
     function createBubble() {
         const bubble = document.createElement('div');
         bubble.classList.add('bubble');
         bubble.style.left = `${Math.random() * 100}%`;
-        const size = Math.floor(Math.random() * 45) + 10; 
+        const size = Math.floor(Math.random() * 40) + 15; 
         bubble.style.width = `${size}px`;
         bubble.style.height = `${size}px`;
+                // Generate random x-axis offset
+        const randomXOffset = Math.random() * 300 - 0; // Adjust the range of offset as needed
+        bubble.style.setProperty('--x-offset', randomXOffset);
         background.appendChild(bubble);
         setTimeout(() => {
             background.removeChild(bubble);
-        }, 5000); 
+        }, 4000); 
     }
+
     setInterval(createBubble, 700); // Lower = More Bubbles
 
-    // Moving Background
+    // Bubbles move based on cursor position
     document.addEventListener('mousemove', (event) => {
-        const mouseX = event.clientX;
-        const mouseY = event.clientY;
-
+         const mouseX = event.clientX;
         const backgroundRect = background.getBoundingClientRect();
         const backgroundCenterX = backgroundRect.left + backgroundRect.width / 2;
-        const backgroundCenterY = backgroundRect.top + backgroundRect.height / 2;
-
-        const deltaX = mouseX - backgroundCenterX;
-        const deltaY = mouseY - backgroundCenterY;
-
-        const moveX = deltaX / -200;
-        const moveY = deltaY / 90;
-
-        background.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        
+        // Calculate distance between mouse and background center
+        const distance = mouseX - backgroundCenterX;
+        
+        // Update custom property for bubble movement
+        background.style.setProperty('--mouse-distance', distance);
     });
+
+
+    // Create and display the highest combo element
+    const highestComboElement = document.createElement('div');
+    highestComboElement.id = 'highest-combo';
+    highestComboElement.textContent = `Speen! Combo: x${highestCombo}`;
+    document.body.appendChild(highestComboElement);
 
     // Profile Picture Click
     profilePic.addEventListener('click', (event) => {
-        const currentTime = new Date().getTime();
-        const timeDiff = currentTime - lastClickedTime;
+    const currentTime = new Date().getTime();
+    const timeDiff = currentTime - lastClickedTime;
 
-        if (timeDiff < 1000) {
-            clickCount++;
-        } else {
-            clickCount = 1;
+    if (timeDiff < 1000) {
+        clickCount++;
+    } else {
+        clickCount = 1;
+    }
+
+    lastClickedTime = currentTime;
+
+    clickSound.volume = 0.25;
+    clickSound.currentTime = 0;
+    clickSound.play();
+
+    const baseRotation = clickCount * 360; // Each click adds one full rotation
+    const randomRotation = Math.random() * 720;
+    const clockwiseRotation = baseRotation + randomRotation + Math.ceil(baseRotation / 360) * 360;
+
+    profilePic.style.transition = 'transform 3s'; // Smooth transition
+    profilePic.style.transform = `rotate(${clockwiseRotation}deg)`; // Apply the rotation
+
+    createComboCounter(event.clientX, event.clientY, clickCount);
+
+    // Change background gradient on every 10 clicks
+    if (clickCount % 10 === 0) {
+        changeBackgroundGradient();
+        if (musicSound.paused) {
+            musicSound.currentTime = 0;
+            musicSound.play();
+            musicSound.volume = 0.55;
+            profilePic.src = 'pic/Disk2.png';
+            setInterval(createBubble, 85); // Adjust the interval for more frequent spawns
         }
+    }
 
-        lastClickedTime = currentTime;
-
-        clickSound.volume = 0.35;
-        clickSound.currentTime = 0;
-        clickSound.play();
-        profilePic.classList.add('spin');
-        setTimeout(() => {
-            profilePic.classList.remove('spin');
-        }, 1000);
-
-        createComboCounter(event.clientX, event.clientY, clickCount);
-
-// Change background gradient on every 10 clicks
-        if (clickCount % 10 === 0) {
-            changeBackgroundGradient();
-            if (musicSound.paused) {
-                musicSound.currentTime = 0;
-                musicSound.play();
-                musicSound.volume = 0.55;
-                profilePic.src = 'pic/john.png';
-
-                setInterval(createBubble, 90); // Adjust the interval for more frequent spawns
-            }
-        }
-    });
+    // Update highestCombo if the current combo exceeds it
+    if (clickCount > highestCombo) {
+        highestCombo = clickCount;
+        localStorage.setItem('highestCombo', highestCombo); // Save highest combo to localStorage
+        highestComboElement.textContent = `Highest Combo: ${highestCombo}`;
+    }
+});
 
     function changeBackgroundGradient() {
     const colors = generateComplementaryColors();
