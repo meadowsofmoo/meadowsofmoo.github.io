@@ -3,10 +3,36 @@ document.addEventListener('DOMContentLoaded', () => {
     profilePic.setAttribute('draggable', 'false');
     const clickSound = document.getElementById('click-sound');
     const musicSound = document.getElementById('music');
+    const gfSound = document.getElementById('gfegg');
     const background = document.querySelector('.bubbles');
     let clickCount = 0;
+    let bubOpac = 1;
     let lastClickedTime = 0;
+    let tutorialCode = [37, 39, 37, 39, 38, 40, 38, 40, ]; // Key codes for Up, Up, Down, Down, Left, Right, Left, Right
+    let tutorialIndex = 0;
     let highestCombo = localStorage.getItem('highestCombo') ? parseInt(localStorage.getItem('highestCombo'), 10) : 0;
+
+document.addEventListener('keydown', (event) => {
+    if (event.keyCode === tutorialCode[tutorialIndex]) {
+        tutorialIndex++;
+        if (tutorialIndex === tutorialCode.length) {
+            activateTutorialCode();
+            tutorialIndex = 0;
+        }
+    } else {
+        tutorialIndex = 0;
+    }
+});
+
+function activateTutorialCode() {
+    gfSound.play()
+    bubOpac = 0;
+    setInterval(createFloatingImage, 500);// Replace this with any action you want to perform
+    // For example, you could trigger more bubbles, change background, etc.
+    for (let i = 0; i < 50; i++) {
+        
+    }
+}
 
 // Bubble Controller
     function createBubble() {
@@ -15,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
         bubble.style.left = `${Math.random() * 100}%`;
         const size = Math.floor(Math.random() * 40) + 15; 
         bubble.style.width = `${size}px`;
-        bubble.style.height = `${size}px`;
+        bubble.style.height = `${size}px`;  
+        bubble.style.height = bubOpac;    
                 // Generate random x-axis offset
         const randomXOffset = Math.random() * 300 - 0; // Adjust the range of offset as needed
         bubble.style.setProperty('--x-offset', randomXOffset);
@@ -25,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 4000); 
     }
 
-    setInterval(createBubble, 700); // Lower = More Bubbles
+    setInterval(createBubble, 600); // Lower = More Bubbles
 
     // Bubbles move based on cursor position
     document.addEventListener('mousemove', (event) => {
@@ -81,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             musicSound.play();
             musicSound.volume = 0.55;
             profilePic.src = 'pic/Disk2.png';
-            setInterval(createBubble, 85); // Adjust the interval for more frequent spawns
+            setInterval(createBubble, 75);
         }
     }
 
@@ -92,6 +119,34 @@ document.addEventListener('DOMContentLoaded', () => {
         highestComboElement.textContent = `Highest Combo: ${highestCombo}`;
     }
 });
+
+function createFloatingImage() {
+    const imagePaths = [
+        'pic/image4.png',
+        'pic/image3.png',
+        'pic/image2.png',
+        'pic/image1.png'
+    ];
+
+    // Select a random image path from the array
+    const randomImagePath = imagePaths[Math.floor(Math.random() * imagePaths.length)];
+
+    const image = document.createElement('img');
+    image.src = randomImagePath;
+    image.classList.add('floating-image');
+    const container = document.querySelector('.floating-images');
+    container.appendChild(image);
+    
+    const randomX = Math.random() * 100;
+    const randomSize = Math.floor(Math.random() * 80) + 65;
+    image.style.left = `${randomX}%`;
+    image.style.width = `${randomSize}px`;
+    image.style.height = `${randomSize}px`;
+    setTimeout(() => {
+        container.removeChild(image);
+    }, 3900); 
+
+}
 
     function changeBackgroundGradient() {
     const colors = generateComplementaryColors();
