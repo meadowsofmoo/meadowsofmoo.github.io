@@ -32,32 +32,38 @@ body {
 .bubble {
     position: absolute;
     bottom: 0;
-    width: 20px;
-    height: 20px;
+    width: 0px;
+    height: 0px;
+    background: transparent;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    animation: bubbles 5s linear infinite;
-    opacity: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.40);
+    animation: bubbles 4s linear infinite;
 }
 
-.small-bubble {
-    width: 10px;
-    height: 10px;
-    border-width: 1px;
-    animation-duration: 4s;
+.bubble:before {
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.3) translate(-42%, -42%);
+    background: radial-gradient(#fff, transparent);
+    border-radius: 50%;
+    opacity: 60%;
+
 }
 
 @keyframes bubbles {
     0% {
-        transform: translateY(0);
+        transform: translateY(0) translateX(0);
         opacity: 1;
     }
     100% {
-        transform: translateY(-1000px);
+        transform: translateY(-1000px) translateX(calc(var(--x-offset) * 1px + var(--mouse-distance) * 0.05px));
         opacity: 0;
     }
 }
+
 
 /*Container */
 .container {
@@ -205,16 +211,6 @@ body {
     animation: pushRelease 1s forwards; 
 }
 
-/*Profile Pic Spin */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-#profile-pic.spin {
-    animation: spin .7s cubic-bezier(.25,.58,0,1.01)
-}
-
 /*Combo Counter */
 .combo-counter {
     position: absolute;
@@ -233,5 +229,16 @@ body {
 @keyframes fadeOut {
     0% { opacity: 1; }
     100% { opacity: 0; }
+}
+
+#highest-combo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 18px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
 }
 
