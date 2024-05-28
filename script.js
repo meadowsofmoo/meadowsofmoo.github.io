@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const profilePic = document.getElementById('profile-pic');
     const clickSound = document.getElementById('click-sound');
+    const muscSound = document.getElementById('music');
     let clickCount = 0;
     let lastClickedTime = 0;
 
@@ -17,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const deltaX = mouseX - backgroundCenterX;
         const deltaY = mouseY - backgroundCenterY;
 
-        const moveX = deltaX / -300;
-        const moveY = deltaY / -550;
+        const moveX = deltaX / -100;
+        const moveY = deltaY / 200;
 
         background.style.transform = `translate(${moveX}px, ${moveY}px)`;
     });
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         lastClickedTime = currentTime;
 
+        clickSound.volume = 0.35;
         clickSound.currentTime = 0;
         clickSound.play();
         profilePic.classList.add('spin');
@@ -49,6 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // Change background gradient on every 10 clicks
         if (clickCount % 10 === 0) {
             changeBackgroundGradient();
+            if (muscSound.paused) {
+        muscSound.currentTime = 0;
+        muscSound.play();
+        muscSound.volume = 0.65;
+    }
         }
     });
 
