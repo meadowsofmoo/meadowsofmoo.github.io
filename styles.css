@@ -1,0 +1,280 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #F768A1 10%, #C868F7 100%);
+    background-size: 400% 400%;
+    animation: gradientAnimation 7.5s ease infinite;
+    font-family: 'Noto Sans', sans-serif;
+    overflow: hidden;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/*Bubbles */
+.bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.bubble {
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    animation: bubbles 10s linear infinite;
+    opacity: 0;
+}
+
+.small-bubble {
+    width: 10px;
+    height: 10px;
+    border-width: 1px;
+    animation-duration: 8s;
+}
+
+.bubble:nth-child(1) {
+    left: 20%;
+    width: 20px;
+    height: 20px;
+    animation-duration: 8s;
+    animation-delay: 1s;
+}
+
+.bubble:nth-child(2) {
+    left: 40%;
+    width: 30px;
+    height: 30px;
+    animation-duration: 12s;
+    animation-delay: 3s;
+}
+
+.bubble:nth-child(3) {
+    left: 60%;
+    width: 15px;
+    height: 15px;
+    animation-duration: 10s;
+    animation-delay: 5s;
+}
+
+.bubble:nth-child(4) {
+    left: 80%;
+    width: 25px;
+    height: 25px;
+    animation-duration: 14s;
+    animation-delay: 7s;
+}
+
+.bubble:nth-child(5) {
+    left: 50%;
+    width: 35px;
+    height: 35px;
+    animation-duration: 11s;
+    animation-delay: 2s;
+}
+
+@keyframes bubbles {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-1000px);
+        opacity: 0;
+    }
+}
+
+/*Container */
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 35px;  
+    box-shadow: 0 0 35px rgba(0, 0, 0, .25);
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(2.5px); /* Add glass diffusion blur effect */
+    border: 3px solid transparent; /* Make the border width greater than 0 */
+    border-image: linear-gradient(135deg, #8A2BE2, #A020F0, #DA70D6) 1; /* Three-color gradient */
+    animation: borderAnimation 15s ease infinite; /* Add animation to the border */ 
+}
+
+@keyframes borderAnimation {
+    0% { border-image: linear-gradient(135deg, #8A2BE2, #A020F0, #DA70D6) 1; }
+    50% { border-image: linear-gradient(135deg, #DA70D6, #A020F0, #8A2BE2) 1; }
+    100% { border-image: linear-gradient(135deg, #8A2BE2, #A020F0, #DA70D6) 1; }
+
+}
+
+/*Profile Pic */
+.profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border: 3px solid #8A2BE2;
+}
+
+.profile h1 {
+    margin: 10px 0;
+    font-size: 32px;
+    color: #FFFFFF; /* Change the font color to white */
+    -webkit-text-stroke-width: 1px; /* Set the stroke width */
+    -webkit-text-stroke-color: transparent; /* Make the stroke color transparent initially */
+    animation: rainbowOutline 20s infinite linear; /* Add animation for rainbow outline */
+}
+
+@keyframes rainbowOutline {
+    0% { -webkit-text-stroke-color: red; }
+    10% { -webkit-text-stroke-color: orange; }
+    20% { -webkit-text-stroke-color: yellow; }
+    30% { -webkit-text-stroke-color: lime; }
+    40% { -webkit-text-stroke-color: aqua; }
+    50% { -webkit-text-stroke-color: blue; }
+    60% { -webkit-text-stroke-color: purple; }
+    70% { -webkit-text-stroke-color: pink; }
+    80% { -webkit-text-stroke-color: red; }
+    90% { -webkit-text-stroke-color: orange; }
+    100% { -webkit-text-stroke-color: yellow; }
+}
+
+
+/*Link Buttons */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 350px; /* Adjust the width as needed */  
+}
+
+
+.link-button {
+    text-decoration: none;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /*Distance for Icons and Text*/
+    transition: background 0.3s, transform 0.3s, border-color 0.3s; /* Added border-color to the transition */
+    position: relative; /* Added position relative for pseudo-elements */
+}
+
+.link-button i {
+    font-size: 20px;
+}
+
+.link-button.newgrounds {
+    background-color: rgba(255,204,0, 0.75);
+    backdrop-filter: blur(3px);
+}
+
+.link-button.newgrounds img {
+    width: 25px; /* Adjust the width of the custom icon */
+    height: 25px; /* Adjust the height of the custom icon */
+    margin-right: 5px; /* Optional: Adjust the spacing between the icon and text */
+}
+
+.link-button.newgrounds:hover {
+    background-color: rgba(255,204,0, 1);
+    transform: scale(1.05);
+}
+
+.link-button.youtube {
+    background-color: rgba(255,0,0, 0.75);
+    backdrop-filter: blur(3px);
+}
+
+.link-button.youtube:hover {
+    background-color: rgba(255,0,0, 1);
+    transform: scale(1.05);
+}
+
+.link-button.soundcloud {
+    background-color: rgba(255,85,0, 0.75);
+    backdrop-filter: blur(3px);
+}
+
+.link-button.soundcloud:hover {
+    background-color: rgba(255,85,0, 1);
+    transform: scale(1.05);
+}
+
+.link-button.twitter {
+    background-color: rgba(29,161,242, 0.75);
+    backdrop-filter: blur(3px);
+}
+
+.link-button.twitter:hover {
+    background-color: rgba(29,161,242, 1);
+    transform: scale(1.05);
+}
+
+.link-button.spotify {
+    background-color: rgba(30,215,96, 0.75);
+    backdrop-filter: blur(3px);
+}
+
+.link-button.spotify:hover {
+    background-color: rgba(30,215,96, 1);
+    transform: scale(1.05);
+}
+
+.link-button:active {
+    animation: wiggle 0.3s;
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/*Profile Pic Spin */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#profile-pic.spin {
+    animation: spin 1s ease-in-out;
+}
+
+/*Combo Counter */
+.combo-counter {
+    position: absolute;
+    font-size: 24px;
+    color: white;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 9999;
+    animation: fadeOut 2s forwards;
+    text-shadow: -1px -1px 0 black,  
+                  1px -1px 0 black,
+                 -1px  1px 0 black,
+                  1px  1px 0 black;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
