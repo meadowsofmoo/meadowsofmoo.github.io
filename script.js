@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const profilePic = document.getElementById('profile-pic');
     profilePic.setAttribute('draggable', 'false');
     const momText = document.querySelector('.profile h1');
+    const ngButt = document.getElementById('ng-button');
+    const ytButt = document.getElementById('yt-button');
+    const spotButt = document.getElementById('spot-button');
+    const txButt = document.getElementById('tx-button');
+    const scButt = document.getElementById('sc-button');
     const notification = document.getElementById('sound-notification');
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
@@ -37,8 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let tutorialIndex = 0;
     let highestCombo = localStorage.getItem('highestCombo') ? parseInt(localStorage.getItem('highestCombo'), 10) : 0;
 
-
-
 // Checking for User Interaction
     const removeNotification = () => {
             notification.classList.add('hidden');
@@ -49,21 +52,21 @@ document.addEventListener('DOMContentLoaded', () => {
             document.addEventListener('click', removeNotification);
             document.addEventListener('keypress', removeNotification);
 
-// Blur shits
-    buttons.forEach(function(button) {
-        profilePic.classList.add('blurred');
-        momText.classList.add('blurred');
-        button.classList.add('blurred');
-    });
-
 // Remove blur
-    setTimeout(function() {
-        buttons.forEach(function(button) {
-            button.classList.remove('blurred');
-            momText.classList.remove('blurred');
-            profilePic.classList.remove('blurred');
-        });
-    }, 0);
+setTimeout(function() {
+    profilePic.style.filter = 'none';
+    momText.style.filter = 'none';
+    ngButt.style.filter = 'none';
+    ytButt.style.filter = 'none';
+    spotButt.style.filter = 'none';
+    txButt.style.filter = 'none';
+    scButt.style.filter = 'none';
+
+    // Gradually increase opacity
+    profilePic.style.opacity = 1;
+    momText.style.opacity = 1;
+
+}, 5); // Wait for 1 second
 
 // Function to toggle mute
             function toggleMute() {
@@ -334,7 +337,7 @@ function createFloatingImage() {
     if (clickCount > highestCombo) {
         highestCombo = clickCount;
         localStorage.setItem('highestCombo', highestCombo); // Save highest combo to localStorage
-        highestComboElement.textContent = `Highest Combo: ${highestCombo}`;
+        highestComboElement.textContent = `Speen! Combo: x${highestCombo}`;
     }
 });
 
