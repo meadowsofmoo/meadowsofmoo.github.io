@@ -1,3 +1,13 @@
+/* CSS Reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -51,7 +61,7 @@ body {
     pointer-events: none;
     overflow: hidden;
     z-index: 1;
-    filter: blur(1px);
+    filter: blur(0.75px);
 }
 
 .bubble {
@@ -114,8 +124,6 @@ body {
     100% { border-image: linear-gradient(135deg, #8A2BE2, #A020F0, #DA70D6) 1; }
 
 }
-
-
 
 /*Profile Pic */
 .profile img {
@@ -193,7 +201,8 @@ body {
 }
 
 .blurred {
-  filter: blur(10px);
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
 }
 
 /*NewGrounds*/
@@ -235,10 +244,10 @@ body {
 
 .link-button.spotify {
     border: 2.5px solid white;
-    border-color: rgba(30,215,96, 0.75);
+    border-color: rgba(30,215,96, 0.75);    
     backdrop-filter: blur(3px);
-    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 999999999s; 
-    animation: wiggle .3s forwards;
+    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 99999999s; 
+    animation: wiggle .3s linear;
 }
 
 .link-button.spotify:hover {
@@ -406,7 +415,7 @@ body {
     animation: hu__hu__ infinite 2.5s ease-in-out
 }
 
-@@keyframes hu__hu__ {
+@keyframes hu__hu__ {
     50% { transform: translateY(20px) }
 }
 
