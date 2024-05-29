@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeadowsOfMoo Landing Page</title>
+    <title>SusLink (like amogus)</title>
+    <link rel="icon" href="pic/favicon.ico" type="image/x-icon">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css" rel="stylesheet">
@@ -16,22 +20,22 @@
 <! -- Links --> 
     <div class="container">
         <div class="profile">
-            <img id="profile-pic" src="pic/profile-pic.png" alt="Profile Picture">
+            <img id="profile-pic" src="pic/profile-pic.png" alt="Profile Picture" style="filter: blur(10px);">
                 <div id="text-box-container" style="display: none;">
                     <input type="text" id="text-box" placeholder="Sound Test">
                 </div>
 
-            <h1 class="momText1">@MeadowsOfMoo</h1>
+            <h1 class="momText1" style="filter: blur(10px);">@MeadowsOfMoo </h1>
         </div>
         <div class="links">
-            <a href="https://meadowsofmoo.newgrounds.com" target="_blank" class="link-button newgrounds">
+            <a href="https://meadowsofmoo.newgrounds.com" target="_blank" id="ng-button" class="link-button newgrounds" style="filter: blur(10px);">
             <img src="pic/ng_logo.png" alt="Newgrounds" draggable="false">
             Newgrounds
             </a>
-            <a href="https://www.youtube.com/channel/UCY1l8Y3ZvEvY1xkxYc6NiTA" target="_blank" class="link-button youtube"><i class="fab fa-youtube"></i> YouTube</a>
-            <a class="link-button spotify"><i class="fab fa-spotify" draggable="false"></i> Spotify</a>
-            <a href="https://x.com/realSpaceKat" target="_blank" class="link-button twitter"><i class="fab fa-twitter"></i> Twitter</a>
-            <a href="https://soundcloud.com/meadowsofmoo" target="_blank" class="link-button soundcloud"><i class="fab fa-soundcloud"></i> SoundCloud</a>
+            <a href="https://www.youtube.com/channel/UCY1l8Y3ZvEvY1xkxYc6NiTA" target="_blank" id="yt-button" class="link-button youtube" style="filter: blur(10px);"><i class="fab fa-youtube"></i> YouTube</a>
+            <a id="spot-button" class="link-button spotify" style="filter: blur(10px);"><i class="fab fa-spotify" draggable="false"></i> Spotify</a>
+            <a href="https://x.com/realSpaceKat" target="_blank" id="tx-button" class="link-button twitter" style="filter: blur(10px);"><i class="fab fa-twitter"></i> Twitter</a>
+            <a href="https://soundcloud.com/meadowsofmoo" target="_blank" id="sc-button" class="link-button soundcloud" style="filter: blur(10px);"><i class="fab fa-soundcloud"></i> SoundCloud</a>
             <audio id="hover-sound" src="snd/buttonrollover.mp3" preload="auto"></audio>
             <audio id="click-sound" src="snd/buttonclickrelease.mp3" preload="auto"></audio>
             
@@ -48,10 +52,10 @@
 <div id="black-box"></div>
 
 <div class="floating-images">
-    <img src="image1.png" alt="UpArrow" class="floating-image" align="middle">
-    <img src="image2.png" alt="Image 2" class="floating-image" align="middle">
-    <img src="image3.png" alt="Image 3" class="floating-image" align="middle">
-    <img src="image4.png" alt="Image 4" class="floating-image" align="middle">
+    <img src="pic/image1.png" alt="UpArrow" class="floating-image" align="middle">
+    <img src="pic/image2.png" alt="Image 2" class="floating-image" align="middle">
+    <img src="pic/image3.png" alt="Image 3" class="floating-image" align="middle">
+    <img src="pic/image4.png" alt="Image 4" class="floating-image" align="middle">
 </div>
 
     <div class="bubbles">
@@ -66,7 +70,7 @@
     <audio id="gfegg" src="snd/thatshowyoudoit.mp3"></audio>
     <audio id="enteregg" src="snd/chaosemerald.mp3"></audio>
     <audio id="segaegg" src="snd/fii.mp3"></audio>
-    <script src="script.js"></script>
+    
 
     <button class="mute-toggle" id="muteToggle">🔊</button>
 
@@ -74,6 +78,6 @@
        &copy;Copyright 2024 MeadowsofMoo, A.K.A. SpaceKat
     </div>
 
-   
+   <script src="script.js" defer></script>
 </body>
 </html>
