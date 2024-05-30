@@ -45,50 +45,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Paralax Movement
 const container = document.querySelector('.container');
-const containerRect = container.getBoundingClientRect();
-const centerX = (window.innerWidth - containerRect.width) / 2;
-const centerY = (window.innerHeight - containerRect.height) / 2;
-const damping = 0.03; // Damping factor to smooth out the movement
-const movementScale = 10; // Scale factor for mouse movement effect
-const minMovement = 20; // Minimum movement threshold
+            const damping = 0.03; // Damping factor to smooth out the movement
+            const movementScale = 8; // Scale factor for mouse movement effect
+            const minMovement = 20; // Minimum movement threshold
 
-let targetX = centerX;
-let targetY = centerY;
+            let centerX = (window.innerWidth - container.offsetWidth) / 2;
+            let centerY = (window.innerHeight - container.offsetHeight) / 2;
 
-function moveContainer() {
-    const currentX = parseFloat(container.style.left) || centerX;
-    const currentY = parseFloat(container.style.top) || centerY;
+            let targetX = centerX;
+            let targetY = centerY;
 
-    const deltaX = targetX - currentX;
-    const deltaY = targetY - currentY;
+            function updateCenter() {
+                centerX = (window.innerWidth - container.offsetWidth) / 2;
+                centerY = (window.innerHeight - container.offsetHeight) / 2;
+                targetX = centerX;
+                targetY = centerY;
+            }
 
-    // Apply damping to smooth out the movement
-    const dampedDeltaX = deltaX * damping;
-    const dampedDeltaY = deltaY * damping;
+            function moveContainer() {
+                const currentX = parseFloat(container.style.left) || centerX;
+                const currentY = parseFloat(container.style.top) || centerY;
 
-    // Move the container
-    container.style.left = `${currentX + dampedDeltaX}px`;
-    container.style.top = `${currentY + dampedDeltaY}px`;
+                const deltaX = targetX - currentX;
+                const deltaY = targetY - currentY;
 
-    requestAnimationFrame(moveContainer);
-}
+                // Apply damping to smooth out the movement
+                const dampedDeltaX = deltaX * damping;
+                const dampedDeltaY = deltaY * damping;
 
-document.addEventListener('mousemove', function(event) {
-    // Calculate the target position based on mouse movement
-    const movementX = (event.clientX - window.innerWidth / 2) / movementScale;
-    const movementY = (event.clientY - window.innerHeight / 2) / movementScale;
+                // Move the container
+                container.style.left = `${currentX + dampedDeltaX}px`;
+                container.style.top = `${currentY + dampedDeltaY}px`;
 
-    // Ensure the movement is above the minimum threshold
-    if (Math.abs(movementX) > minMovement || Math.abs(movementY) > minMovement) {
-        targetX = centerX + movementX;
-        targetY = centerY + movementY;
-    }
-});
+                requestAnimationFrame(moveContainer);
+            }
 
-// Start the animation loop
-moveContainer();
+            document.addEventListener('mousemove', function(event) {
+                // Calculate the target position based on mouse movement
+                const movementX = (event.clientX - window.innerWidth / 2) / movementScale;
+                const movementY = (event.clientY - window.innerHeight / 2) / movementScale;
 
-// Checking for User Interaction
+                // Ensure the movement is above the minimum threshold
+                if (!container.classList.contains('centered') && (Math.abs(movementX) > minMovement || Math.abs(movementY) > minMovement)) {
+                    targetX = centerX + movementX;
+                    targetY = centerY + movementY;
+                }
+            });
+
+            container.addEventListener('mouseenter', function() {
+                container.classList.add('centered');
+                targetX = centerX;
+                targetY = centerY;
+                container.style.transition = ''; // Remove smooth transition to use animation loop
+            });
+
+            container.addEventListener('mouseleave', function() {
+                container.classList.remove('centered');
+                container.style.transition = ''; // Ensure smooth transition continues via animation loop
+            });
+
+            window.addEventListener('resize', function() {
+                updateCenter();
+            });
+
+            // Initialize the center position and start the animation loop
+            updateCenter();
+            moveContainer();
+
+// Checking for User Interaction With Webpage
     const removeNotification = () => {
             notification.classList.add('hidden');
             document.removeEventListener('click', removeNotification);
