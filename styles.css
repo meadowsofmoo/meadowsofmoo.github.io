@@ -15,9 +15,9 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #440A7F 10%, #FE2042 100%);
-    background-size: 400% 400%;
-    animation: gradientAnimation 7.5s ease infinite;
+    background: linear-gradient(135deg, #440A7F 10%, #ff1044 100%);
+    background-size: 450% 450%;
+    animation: gradientAnimation 10s ease infinite;
     font-family: 'Noto Sans', sans-serif;
     overflow: hidden;
 }
@@ -108,8 +108,10 @@ body {
     background: rgba(255, 255, 255, 0.15);
     padding: 35px;  
     box-shadow: 0 0 35px rgba(0, 0, 0, .25);
-    position: relative;
+    box-sizing: border-box;
+    position: fixed;
     justify-content: center;
+    align-items: center;
     overflow: hidden;
     z-index: 35;
     backdrop-filter: blur(4px); 
@@ -123,6 +125,43 @@ body {
     50% { border-image: linear-gradient(135deg, #DA70D6, #A020F0, #8A2BE2) 1; }
     100% { border-image: linear-gradient(135deg, #8A2BE2, #A020F0, #DA70D6) 1; }
 
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        min-height: auto;
+        max-height: 90%;
+        margin: auto;
+        overflow: hidden;
+    }
+
+    .profile h1 {
+        font-size: 2em;
+        flex-wrap: wrap;
+    }
+
+    .link-button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+    
+    .links {
+        max-width: 100%;
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2em;
+    }
+
+    .link-button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
 }
 
 /*Profile Pic */
@@ -163,7 +202,7 @@ body {
 /*Profile Text*/
 .profile h1 {
     margin: 10px 0;
-    font-size: 32px;
+    font-size: 2em;
     color: #FFFFFF;
     text-shadow: -2px -2px 0 #8A2BE2, 2px -2px 0 #8A2BE2, -2px 2px 0 #8A2BE2, 2px 2px 0 #8A2BE2;
     transition: filter 1s;
@@ -200,17 +239,15 @@ body {
     animation: danceTop 0.5s forwards; 
 }
 
-.blurred {
-    -webkit-filter: blur(10px);
-    filter: blur(10px);
-}
-
 /*NewGrounds*/
 .link-button.newgrounds {
     border: 2.5px solid white;
     border-color: rgba(255,204,0, 1);
     backdrop-filter: blur(3px);
-    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 1s; 
+    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 1s, box-shadow 0.5s ease-in-out; 
+    box-shadow: 
+        inset 0 0 10px rgba(255, 204, 0, 0.5),
+        0 0 10px rgba(255, 204, 0, 0.5); 
 }
 
 .link-button.newgrounds img {
@@ -224,9 +261,8 @@ body {
 .link-button.newgrounds:hover {
     background-color: rgba(255,204,0, 1);
     transform: scale(1.075);
-    content: attr(data-content); 
-    box-shadow: 0 0 35px var(--clr);
-
+    box-shadow: 
+    0 0 18px rgba(255, 204, 0, 1);
 }
 
 /*YouTube*/
@@ -234,50 +270,69 @@ body {
     border: 2.5px solid white;
     border-color: rgba(255,0,0, 0.75);
     backdrop-filter: blur(3px);
-    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 1.25s; 
+    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 1.25s, box-shadow 0.5s ease-in-out; 
+    box-shadow: 
+    inset 0 0 10px rgba(255,0,0, 0.5),
+    0 0 10px rgba(255,0,0, 0.5); 
 }
 
 .link-button.youtube:hover {
     background-color: rgba(255,0,0, 1);
     transform: scale(1.075);
+    box-shadow: 
+    0 0 18px rgba(255,0,0, 1); 
 }
 
 .link-button.spotify {
     border: 2.5px solid white;
     border-color: rgba(30,215,96, 0.75);    
     backdrop-filter: blur(3px);
-    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 99999999s; 
+    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 99999999s, box-shadow 0.5s ease-in-out; 
     animation: wiggle .3s linear;
+    box-shadow: 
+    inset 0 0 10px rgba(30,215,96, 0.5),
+    0 0 10px rgba(30,215,96, 0.5);
 }
 
 .link-button.spotify:hover {
-    background-color: rgba(30,215,96, 1);
+    
     transform: scale(0.925);
+    box-shadow: 
+    0 0 30px rgba(30,215,96, 1); 
 }
 
 .link-button.twitter {
     border: 2.5px solid white;
     border-color: rgba(29,161,242, 0.75); 
     backdrop-filter: blur(3px);
-    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 1.75s; 
+    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 1.75s, box-shadow 0.5s ease-in-out; 
+    box-shadow: 
+    inset 0 0 10px rgba(29,161,242, 0.5),
+    0 0 10px rgba(29,161,242, 0.5);
 }
 
 .link-button.twitter:hover {
     background-color: rgba(29,161,242, 1);
     transform: scale(1.075);
+    box-shadow: 
+    0 0 18px rgba(29,161,242, 1);
 }
 
 .link-button.soundcloud {
     border: 2.5px solid white;
     border-color: rgba(255,85,0, 0.75);
     backdrop-filter: blur(3px);
-    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 2s; 
+    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 2s, box-shadow 0.5s ease-in-out; 
+    box-shadow: 
+    inset 0 0 10px rgba(255,85,0, 0.5),
+    0 0 10px rgba(255,85,0, 0.5);
 }
 
 .link-button.soundcloud:hover {
     background-color: rgba(255,85,0, 1);
     transform: scale(1.075);
-    
+    box-shadow: 
+    0 0 18px rgba(255,85,0, 1);
 }
 
 .link-button:active,
