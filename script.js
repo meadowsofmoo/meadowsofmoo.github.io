@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const momText = document.querySelector('.profile h1');
     const ngButt = document.getElementById('ng-button');
     const ytButt = document.getElementById('yt-button');
+    const ytText = document.getElementById('yttext');
     const spotButt = document.getElementById('spot-button');
     const txButt = document.getElementById('tx-button');
     const scButt = document.getElementById('sc-button');
@@ -42,6 +43,51 @@ document.addEventListener('DOMContentLoaded', () => {
     let tutorialIndex = 0;
     let highestCombo = localStorage.getItem('highestCombo') ? parseInt(localStorage.getItem('highestCombo'), 10) : 0;
 
+// Paralax Movement
+const container = document.querySelector('.container');
+const containerRect = container.getBoundingClientRect();
+const centerX = (window.innerWidth - containerRect.width) / 2;
+const centerY = (window.innerHeight - containerRect.height) / 2;
+const damping = 0.03; // Damping factor to smooth out the movement
+const movementScale = 10; // Scale factor for mouse movement effect
+const minMovement = 20; // Minimum movement threshold
+
+let targetX = centerX;
+let targetY = centerY;
+
+function moveContainer() {
+    const currentX = parseFloat(container.style.left) || centerX;
+    const currentY = parseFloat(container.style.top) || centerY;
+
+    const deltaX = targetX - currentX;
+    const deltaY = targetY - currentY;
+
+    // Apply damping to smooth out the movement
+    const dampedDeltaX = deltaX * damping;
+    const dampedDeltaY = deltaY * damping;
+
+    // Move the container
+    container.style.left = `${currentX + dampedDeltaX}px`;
+    container.style.top = `${currentY + dampedDeltaY}px`;
+
+    requestAnimationFrame(moveContainer);
+}
+
+document.addEventListener('mousemove', function(event) {
+    // Calculate the target position based on mouse movement
+    const movementX = (event.clientX - window.innerWidth / 2) / movementScale;
+    const movementY = (event.clientY - window.innerHeight / 2) / movementScale;
+
+    // Ensure the movement is above the minimum threshold
+    if (Math.abs(movementX) > minMovement || Math.abs(movementY) > minMovement) {
+        targetX = centerX + movementX;
+        targetY = centerY + movementY;
+    }
+});
+
+// Start the animation loop
+moveContainer();
+
 // Checking for User Interaction
     const removeNotification = () => {
             notification.classList.add('hidden');
@@ -61,12 +107,7 @@ setTimeout(function() {
     spotButt.style.filter = 'none';
     txButt.style.filter = 'none';
     scButt.style.filter = 'none';
-
-    // Gradually increase opacity
-    profilePic.style.opacity = 1;
-    momText.style.opacity = 1;
-
-}, 5); // Wait for 1 second
+}, 5);
 
 // Function to toggle mute
             function toggleMute() {
@@ -120,18 +161,29 @@ setTimeout(function() {
         }, 4000); 
     }
 
-    setInterval(createBubble, 600); // Lower = More Bubbles
+    setInterval(createBubble, 500); // Lower = More Bubbles
 
-    // Bubbles move based on cursor position
-    document.addEventListener('mousemove', (event) => {
-        const mouseX = event.clientX;
-        const backgroundRect = background.getBoundingClientRect();
-        const backgroundCenterX = backgroundRect.left + backgroundRect.width / 2;
-        
-        // Calculate distance between mouse and background center
-        const distance = mouseX - backgroundCenterX;
-        background.style.setProperty('--mouse-distance', distance);
-    });            
+
+function updateBubblePosition() {
+    const backgroundRect = background.getBoundingClientRect();
+    const backgroundCenterX = backgroundRect.left + backgroundRect.width / 2;
+    const distance = mouseX - backgroundCenterX;
+    background.style.setProperty('--mouse-distance', distance);
+}
+
+// Update bubble position when mouse moves
+document.addEventListener('mousemove', (event) => {
+    mouseX = event.clientX;
+    updateBubblePosition();
+});
+
+let mouseX = window.innerWidth / 2; // Start at the center
+updateBubblePosition(); // Initial update
+function animateBubbles() {
+    updateBubblePosition();
+    requestAnimationFrame(animateBubbles);
+}
+animateBubbles();       
 
 //Sound Test
 
@@ -155,8 +207,14 @@ textBox.addEventListener('input', () => {
             copyrightElement.innerHTML = `&copy;SEGA Enterprises, Ltd. 1993 - 2024 All Rights Reserved.`;
             musicSound.volume = 0;
             fiiSound.play()
+            ngButt.textContent = 'Infinite';
+            ytButt.textContent = 'Infinite';
+            spotButt.textContent = 'Infinite';
+            txButt.textContent = 'Infinite';
+            scButt.textContent = 'Infinite';
+            momText.textContent = '@Infinite';
             funText.style.display = 'flex';
-            majinScroll.style.display = 'block';
+            majinScroll.style.display = 'block';           
         } else {
             
         }
@@ -329,7 +387,7 @@ function createFloatingImage() {
             musicSound.play();
             
             profilePic.src = 'pic/Disk2.png';
-            setInterval(createBubble, 75);
+            setInterval(createBubble, 50);
         }
     }
 
