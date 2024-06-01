@@ -228,7 +228,7 @@ textBox.addEventListener('input', () => {
 
         if (inputValue === '461225') {
             blackBox.style.display = 'block';
-            copyrightElement.innerHTML = `&copy;SEGA Enterprises, Ltd. 1993 - 2024 All Rights Reserved.`;
+            copyrightElement.textContent = `©SEGA Enterprises, Ltd. 1993 - 2024 All Rights Reserved.`;
             musicSound.volume = 0;
             fiiSound.play()
             ngButt.textContent = 'Infinite';
