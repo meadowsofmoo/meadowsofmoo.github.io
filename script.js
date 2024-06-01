@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const copyrightElement = document.getElementById('copyright');
     const profilePic = document.getElementById('profile-pic');
+    const pfpCredit = document.getElementById('pfpcredit');
     profilePic.setAttribute('draggable', 'false');
     const momText = document.querySelector('.profile h1');
     const ngButt = document.getElementById('ng-button');
@@ -9,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const spotButt = document.getElementById('spot-button');
     const txButt = document.getElementById('tx-button');
     const scButt = document.getElementById('sc-button');
+    const latestButt = document.getElementById('latest-button');
     const notification = document.getElementById('sound-notification');
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
@@ -43,7 +45,30 @@ document.addEventListener('DOMContentLoaded', () => {
     let tutorialIndex = 0;
     let highestCombo = localStorage.getItem('highestCombo') ? parseInt(localStorage.getItem('highestCombo'), 10) : 0;
 
-// Paralax Movement
+    
+// --Checking for User Interaction With Webpage
+    const removeNotification = () => {
+            notification.classList.add('hidden');
+            document.removeEventListener('click', removeNotification);
+            document.removeEventListener('keypress', removeNotification);
+    };
+            document.addEventListener('click', removeNotification);
+            document.addEventListener('keypress', removeNotification);
+
+// --Remove blur
+    setTimeout(function() {
+        profilePic.style.filter = 'none';
+        pfpCredit.style.filter = 'none';
+        momText.style.filter = 'none';
+        ngButt.style.filter = 'none';
+        ytButt.style.filter = 'none';
+        spotButt.style.filter = 'none';
+        txButt.style.filter = 'none';
+        scButt.style.filter = 'none';
+        latestButt.style.filter = 'none';
+    }, 5);
+    
+// --Paralax Movement
 const container = document.querySelector('.container');
             const damping = 0.03; // Damping factor to smooth out the movement
             const movementScale = 8; // Scale factor for mouse movement effect
@@ -112,28 +137,7 @@ const container = document.querySelector('.container');
             updateCenter();
             moveContainer();
 
-// Checking for User Interaction With Webpage
-    const removeNotification = () => {
-            notification.classList.add('hidden');
-            document.removeEventListener('click', removeNotification);
-            document.removeEventListener('keypress', removeNotification);
-    };
-
-            document.addEventListener('click', removeNotification);
-            document.addEventListener('keypress', removeNotification);
-
-// Remove blur
-setTimeout(function() {
-    profilePic.style.filter = 'none';
-    momText.style.filter = 'none';
-    ngButt.style.filter = 'none';
-    ytButt.style.filter = 'none';
-    spotButt.style.filter = 'none';
-    txButt.style.filter = 'none';
-    scButt.style.filter = 'none';
-}, 5);
-
-// Function to toggle mute
+// --Function to toggle mute
             function toggleMute() {
                 isMuted = !isMuted;
                 const volumeIcon = isMuted ? '🔇' : '🔊';
@@ -147,7 +151,7 @@ setTimeout(function() {
 
             muteToggle.addEventListener('click', toggleMute);
 
-// Button Sounds
+// --Button Sounds
             const playHoverSound = () => {
                 hoverSound.currentTime = 0;
                 hoverSound.play().catch(error => {
@@ -167,7 +171,7 @@ setTimeout(function() {
                 button.addEventListener('click', playClickSound);
             });
 
-// Bubble Controller
+// --Bubble Controller
     function createBubble() {
         const bubble = document.createElement('div');
         bubble.classList.add('bubble');
@@ -209,7 +213,7 @@ function animateBubbles() {
 }
 animateBubbles();       
 
-//Sound Test
+// --Sound Test
 
     document.addEventListener('keydown', (event) => {
         if (textBoxContainer.style.display === 'none'){
@@ -250,7 +254,7 @@ function isBlackBoxVisible() {
     return computedStyle.visibility === 'visible';
 }
 
-//FNF Arrows on Key Press
+// --FNF Arrows on Key Press
 document.addEventListener('keydown', (event) => {
     if (event.keyCode === tutorialCode[tutorialIndex]) {
         tutorialIndex++;
@@ -344,7 +348,7 @@ function activateTutorialCode() {
     }
 }
 
-//FNF Floating Arrows to replace bubbles
+// --FNF Floating Arrows to replace bubbles
 function createFloatingImage() {
     const imagePaths = [
         'pic/image4.png',
@@ -373,7 +377,7 @@ function createFloatingImage() {
 
 }
 
-// Create and display the highest combo element
+// --Create and display the highest combo element
     const highestComboElement = document.createElement('div');
     highestComboElement.id = 'highest-combo';
     highestComboElement.textContent = `Speen! Combo: x${highestCombo}`;

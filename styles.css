@@ -169,7 +169,7 @@ body {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin-bottom: 20px;
+    margin-bottom: 2.5px;
     cursor: pointer;
     border: 3px solid #8A2BE2;
     transition: filter 0.75s;
@@ -199,10 +199,53 @@ body {
     opacity: 0.5; 
 }
 
+#pfpcredit {
+    margin-top: 10px 0;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #FFFFFF; 
+    transition: filter 1s;
+}
+
+#credittooltip {
+    position: absolute;
+    left: 50%;
+    top: 143px;
+    transform: translateX(-50%);
+    background-color: #000000;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    white-space: nowrap;
+    padding: 10px 15px;
+    border-radius: 7px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#credittooltip::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    border: 15px solid;
+    border-color: #000 #0000 #0000 #0000;
+}
+
+#pfpcredit:hover #credittooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
 /*Profile Text*/
 .profile h1 {
-    margin: 10px 0;
+    margin: 5px 0;
+    margin-bottom: 15px;
     font-size: 2em;
+    font-weight: bold;
     color: #FFFFFF;
     text-shadow: -2px -2px 0 #8A2BE2, 2px -2px 0 #8A2BE2, -2px 2px 0 #8A2BE2, 2px 2px 0 #8A2BE2;
     transition: filter 1s;
@@ -217,20 +260,20 @@ body {
     width: 350px;
 }
 
-
 .link-button {
     text-decoration: none;
     color: white;
     padding: 15px 25px;
     border-radius: 5px;
     font-size: 18px;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     transition: background 1s, transform 0.3s, border-color 0.3s, filter 1s; 
     position: relative; 
-    background-color: transparent;
+    background: rgba(255, 255, 255, 0.15);
     user-select: none;
 }
 
@@ -242,12 +285,12 @@ body {
 /*NewGrounds*/
 .link-button.newgrounds {
     border: 2.5px solid white;
-    border-color: rgba(255,204,0, 1);
-    backdrop-filter: blur(3px);
-    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 1s, box-shadow 0.5s ease-in-out; 
+    border-color: rgba(255,181,14, 1);
+    
+    transition: background 0.5s, transform 0.3s, border-color 0.3s, filter 1s, box-shadow 0.5s ease-in-out; 
     box-shadow: 
-        inset 0 0 10px rgba(255, 204, 0, 0.5),
-        0 0 10px rgba(255, 204, 0, 0.5); 
+        inset 0 0 10px rgba(255,181,14, 0.5),
+        0 0 10px rgba(255,181,14, 0.5); 
 }
 
 .link-button.newgrounds img {
@@ -259,18 +302,17 @@ body {
 }
 
 .link-button.newgrounds:hover {
-    background-color: rgba(255,204,0, 1);
+    background-color: rgba(255,181,14, 1);
     transform: scale(1.075);
     box-shadow: 
-    0 0 18px rgba(255, 204, 0, 1);
+    0 0 18px rgba(255,181,14, 1);
 }
 
 /*YouTube*/
 .link-button.youtube {
     border: 2.5px solid white;
     border-color: rgba(255,0,0, 0.75);
-    backdrop-filter: blur(3px);
-    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 1.25s, box-shadow 0.5s ease-in-out; 
+    transition: background 0.5s, transform 0.3s, border-color 0.3s, filter 1.25s, box-shadow 0.5s ease-in-out; 
     box-shadow: 
     inset 0 0 10px rgba(255,0,0, 0.5),
     0 0 10px rgba(255,0,0, 0.5); 
@@ -283,11 +325,11 @@ body {
     0 0 18px rgba(255,0,0, 1); 
 }
 
+/*Spotify*/
 .link-button.spotify {
     border: 2.5px solid white;
     border-color: rgba(30,215,96, 0.75);    
-    backdrop-filter: blur(3px);
-    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 99999999s, box-shadow 0.5s ease-in-out; 
+    transition: background 0.5s, transform 0.3s, border-color 0.3s, filter 99999999s, box-shadow 0.5s ease-in-out; 
     animation: wiggle .3s linear;
     box-shadow: 
     inset 0 0 10px rgba(30,215,96, 0.5),
@@ -301,11 +343,11 @@ body {
     0 0 30px rgba(30,215,96, 1); 
 }
 
+/*Twitter*/
 .link-button.twitter {
     border: 2.5px solid white;
     border-color: rgba(29,161,242, 0.75); 
-    backdrop-filter: blur(3px);
-    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 1.75s, box-shadow 0.5s ease-in-out; 
+    transition: background 0.5s, transform 0.3s, border-color 0.3s, filter 1.75s, box-shadow 0.5s ease-in-out; 
     box-shadow: 
     inset 0 0 10px rgba(29,161,242, 0.5),
     0 0 10px rgba(29,161,242, 0.5);
@@ -318,11 +360,11 @@ body {
     0 0 18px rgba(29,161,242, 1);
 }
 
+/*SoundCloud*/
 .link-button.soundcloud {
     border: 2.5px solid white;
     border-color: rgba(255,85,0, 0.75);
-    backdrop-filter: blur(3px);
-    transition: background 0.75s, transform 0.3s, border-color 0.3s, filter 2s, box-shadow 0.5s ease-in-out; 
+    transition: background 0.5s, transform 0.3s, border-color 0.3s, filter 2s, box-shadow 0.5s ease-in-out; 
     box-shadow: 
     inset 0 0 10px rgba(255,85,0, 0.5),
     0 0 10px rgba(255,85,0, 0.5);
@@ -333,6 +375,56 @@ body {
     transform: scale(1.075);
     box-shadow: 
     0 0 18px rgba(255,85,0, 1);
+}
+
+.link-button.latest {
+    border: 2.5px solid white;
+    border-color: #FFFFFF;
+    transition: 
+        background 0.5s,
+        transform 0.75s,
+        border-color 0.3s,
+        filter 1.25s,
+        box-shadow 0.5s ease-in-out,
+        width 0.3s,
+        padding-top 0.3s;
+    box-shadow: 
+        inset 0 0 10px #FFFFFF,
+        0 0 10px #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 1px #000000;
+    font-weight: bold;
+}
+
+.link-button.latest:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(pic/latest.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    transition: filter 0.8s;
+    filter: blur(4px);
+    z-index: -1;
+}
+
+.link-button.latest:hover {
+    transform: scale(1.075);
+    box-shadow: 
+        0 0 18px #FFFFFF;
+    padding-top: 155px;
+}
+
+.link-button.latest:hover::before {
+    filter: blur(0); /* Remove blur effect on hover */
 }
 
 .link-button:active,
