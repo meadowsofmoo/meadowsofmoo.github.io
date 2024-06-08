@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const spotButt = document.getElementById('spot-button');
     const txButt = document.getElementById('tx-button');
     const scButt = document.getElementById('sc-button');
+    const robloxButt = document.getElementById('roblox-button');
     const latestButt = document.getElementById('latest-button');
     const notification = document.getElementById('sound-notification');
     const windowWidth = window.innerWidth;
@@ -65,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         spotButt.style.filter = 'none';
         txButt.style.filter = 'none';
         scButt.style.filter = 'none';
+        robloxButt.style.filter = 'none';
         latestButt.style.filter = 'none';
     }, 5);
     
