@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moo Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .music-player {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .playlist {
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+        .playlist-item {
+            cursor: pointer;
+            padding: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        .playlist-item:hover {
+            background-color: #f0f0f0;
+        }
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="music-player">
+        <div class="playlist" id="playlist">
+            <!-- Playlist items will be dynamically added here -->
+        </div>
+        <audio id="audioPlayer" controls>
+            <source id="audioSource" src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        // List of audio files (replace these URLs with your own files)
+        const audioFiles = [
+            { title: 'Song 1', url: 'song1.mp3' },
+            { title: 'Song 2', url: 'song2.mp3' },
+            { title: 'Song 3', url: 'song3.mp3' },
+            // Add more songs here
+        ];
+
+        const playlistElement = document.getElementById('playlist');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioSource = document.getElementById('audioSource');
+
+        // Create playlist items
+        audioFiles.forEach((file, index) => {
+            const item = document.createElement('div');
+            item.classList.add('playlist-item');
+            item.textContent = file.title;
+            item.addEventListener('click', () => {
+                audioSource.src = file.url;
+                audioPlayer.load();
+                audioPlayer.play();
+            });
+            playlistElement.appendChild(item);
+        });
+    </script>
+</body>
+</html>
