@@ -497,28 +497,6 @@ body {
     100% { transform: rotate(0deg); }
 }
 
-@keyframes gdcolorCycle {
-    0% {
-        border-color: rgba(29,161,242, 0.75); /* Blue */
-        box-shadow: 
-            inset 0 0 10px rgba(29,161,242, 0.5),
-            0 0 10px rgba(29,161,242, 0.5);
-    }
-    50% {
-        border-color: rgba(0,255,0, 0.75); /* Green */
-        box-shadow: 
-            inset 0 0 10px rgba(0,255,0, 0.5),
-            0 0 10px rgba(0,255,0, 0.5);
-    }
-    100% {
-        border-color: rgba(255,0,0, 0.75); /* Red */
-        box-shadow: 
-            inset 0 0 10px rgba(255,0,0, 0.5),
-            0 0 10px rgba(255,0,0, 0.5);
-    }
-}
-
-
 /*Combo Counter */
 .combo-counter {
     position: absolute;
