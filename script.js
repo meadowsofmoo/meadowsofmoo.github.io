@@ -241,9 +241,12 @@ textBox.addEventListener('input', () => {
             fiiSound.play()
             ngButt.textContent = 'Infinite';
             ytButt.textContent = 'Infinite';
+            latestButt.textContent = 'Infinite';
             spotButt.textContent = 'Infinite';
+            flpButt.textContent = 'Infinite';
             txButt.textContent = 'Infinite';
             scButt.textContent = 'Infinite';
+            robloxButt.textContent = 'Infinite';
             momText.textContent = '@Infinite';
             funText.style.display = 'flex';
             majinScroll.style.display = 'block';           
