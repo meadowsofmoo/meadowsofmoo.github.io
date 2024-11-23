@@ -346,11 +346,11 @@ body {
 /*FLP*/
 .link-button.FLP {
     border: 2.5px solid white;
-    border-color: rgba(29,161,242, 0.75); 
+    border-color: rgba(72, 137, 244, 0.75); 
     transition: background 0.5s, transform 0.3s, border-color 0.3s, filter 1.75s, box-shadow 0.5s ease-in-out; 
     box-shadow: 
-    inset 0 0 10px rgba(29,161,242, 0.5),
-    0 0 10px rgba(29,161,242, 0.5);
+    inset 0 0 10px rgba(72, 137, 244, 0.5),
+    0 0 10px rgba(72, 137, 244, 0.5);
 }
 
 .link-button.FLP img {
@@ -362,10 +362,10 @@ body {
 }
 
 .link-button.FLP:hover {
-    background-color: rgba(29,161,242, 1);
+    background-color: rgb(72, 137, 244);
     transform: scale(1.075);
     box-shadow: 
-    0 0 18px rgba(29,161,242, 1);
+    0 0 18px rgba(72, 137, 244, 1);
 }
 
 /*Twitter*/
@@ -389,7 +389,7 @@ body {
 .link-button.soundcloud {
     border: 2.5px solid white;
     border-color: rgba(255,85,0, 0.75);
-    transition: background 0.5s, transform 0.3s, border-color 0.3s, filter 2s, box-shadow 0.5s ease-in-out; 
+    transition: background 0.5s, transform 0.3s, border-color 0.3s, filter 2.25s, box-shadow 0.5s ease-in-out; 
     box-shadow: 
     inset 0 0 10px rgba(255,85,0, 0.5),
     0 0 10px rgba(255,85,0, 0.5);
@@ -405,12 +405,12 @@ body {
 /*SoundCloud*/
 .link-button.roblox {
     border: 2.5px solid white;
-    border-color: rgba(161, 165, 162, 1);
+    border-color: rgba(0, 132, 255, 1);
     
-    transition: background 0.5s, transform 0.3s, border-color 0.3s, filter 2.25s, box-shadow 0.5s ease-in-out; 
+    transition: background 0.5s, transform 0.3s, border-color 0.3s, filter 2s, box-shadow 0.5s ease-in-out; 
     box-shadow: 
-        inset 0 0 10px rgba(161, 165, 162, 0.5),
-        0 0 10px rgba(161, 165, 162, 0.5); 
+        inset 0 0 10px rgba(0, 132, 255, 0.5),
+        0 0 10px rgba(0, 132, 255, 0.5); 
 }
 
 .link-button.roblox img {
@@ -422,10 +422,10 @@ body {
 }
 
 .link-button.roblox:hover {
-    background-color: rgba(161, 165, 162, 1);
+    background-color: rgb(0, 132, 255);
     transform: scale(1.075);
     box-shadow: 
-    0 0 18px rgba(161, 165, 162, 1);
+    0 0 18px rgba(0, 132, 255, 1);
 }
 
 /*Latest YT Video*/
