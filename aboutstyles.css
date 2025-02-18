@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+/* CSS Reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* Moo Logo */
+.moo-logo {
+    position: fixed;
+    top: 50px;
+    max-width: 800px;
+    z-index: 5;   
+    overflow: hidden; 
+    transition: transform 3s; 
+    display: flex;
+    filter: drop-shadow(0px 6px 10px #131313);
+    animation: hu__hu__ infinite 2s ease-in-out
+}
+
+@keyframes hu__hu__ {
+    50% { transform: translateY(25px) }
+    
+}
+
+/* Text Container */
+body {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    min-height: 100vh;
+    background-color: #ffe6f2;
+    transition: background 0.3s ease;
+}
+.container {
+    background: #ffe0cf;
+    position: relative;
+    padding: 30px;
+    margin: 40px auto;
+    top: 80px;
+    border-radius: 15px;
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: "Pangolin", serif;
+    font-style: normal;
+    max-width: calc(100% - 250px); 
+    height: calc(100% - 400px); 
+    transition: background 0.3s ease;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.container::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, #ffaa20, #f8017f);
+    background-size: 300% 300%;
+    border-radius: 20px;
+    z-index: -2;
+    animation: chaseAnimation 2s infinite linear;
+}
+@keyframes chaseAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+h2 {
+    color: #ef4f91;
+    text-decoration: underline dotted;
+    font-size: 50px;
+}
+p {
+    color: #ef4f91;
+    font-size: 40px;
+}
+a {
+    color: #ff88b0;
+    font-size: 30px;
+}
+a2 {
+    color: #ff6699;
+    font-size: 30px;
+}
+p2 {
+    color: #444;
+    font-size: 30px;
+}
+
+ /* Custom Scrollbar */
+ ::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #ddc2b3;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #ef4f91;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #f8017f;
+}
+
+/* Background Gradient */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #4d1b7b 10%, #ef4f91 100%);
+    background-size: 450% 450%;
+    animation: gradientAnimation 10s ease infinite;
+    font-family: 'Noto Sans', sans-serif;
+    overflow: hidden;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/*Bubbles */
+.bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -5;
+    filter: blur(0.75px);
+}
+
+.bubble {
+    position: absolute;
+    bottom: -25px;
+    width: 0px;
+    height: 0px;
+    background: transparent;
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.40);
+    animation: bubbles 4s linear infinite;
+}
+
+.bubble:before {
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.3) translate(-42%, -42%);
+    background: radial-gradient(#fff, transparent);
+    border-radius: 50%;
+    opacity: 60%;
+
+}
+
+@keyframes bubbles {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-1000px) translateX(calc(var(--x-offset) * 1px + var(--mouse-distance) * 0.05px));
+        opacity: 0;
+    }
+}
+
+/*Copyright and Credit*/
+.copyright {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 15px;
+    color: #FFFFFF;
+    text-align: center;
+    z-index: 4;
+}
