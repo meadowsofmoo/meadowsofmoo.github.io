@@ -9,11 +9,22 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: baseline;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ensures it takes the full height */
+}
+
+
 /* Moo Logo */
 .moo-logo {
-    position: fixed;
-    top: 50px;
-    max-width: 800px;
+    position: absolute;
+    top: calc(50vh - 600px);
+    max-width: 40vw;
+    max-height: 12vh;
+    margin-bottom: 3vh;
     z-index: 5;   
     overflow: hidden; 
     transition: transform 3s; 
@@ -26,6 +37,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     50% { transform: translateY(25px) }
     
 }
+
+
 
 /* Text Container */
 body {
@@ -42,14 +55,15 @@ body {
     position: relative;
     padding: 30px;
     margin: 40px auto;
-    top: 80px;
+    margin-top: 20vh;
+    margin-bottom: 10vh;
     border-radius: 15px;
     box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     font-family: "Pangolin", serif;
     font-style: normal;
     max-width: calc(100% - 250px); 
-    height: calc(100% - 400px); 
+    height: 875px;
     transition: background 0.3s ease;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -76,23 +90,42 @@ body {
 h2 {
     color: #ef4f91;
     text-decoration: underline dotted;
-    font-size: 50px;
+    font-size: clamp(1.8rem, 4vw, 3rem);
 }
 p {
     color: #ef4f91;
-    font-size: 40px;
+    font-size: clamp(1rem, 3vw, 2rem);
 }
 a {
     color: #ff88b0;
-    font-size: 30px;
+    font-size: clamp(1rem, 3vw, 1.75rem);
 }
-a2 {
-    color: #ff6699;
-    font-size: 30px;
-}
+
 p2 {
     color: #444;
-    font-size: 30px;
+    font-size: clamp(1rem, 3vw, 1.75rem);
+}
+
+ /* Mobile */
+@media (max-width: 768px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Ensures everything stays visible */
+    }
+    .moo-logo {
+        max-width: 50vw; /* Adjust logo size */
+        max-height: 10vh;
+        margin-bottom: 5vh;
+        top: 5vh;
+    }
+    .container {
+        max-width: calc(100% - 85px); 
+        min-height: 65vh;
+        max-height: 85vh;
+        padding: 20px; /* Adjust padding for better spacing */
+    }
 }
 
  /* Custom Scrollbar */
