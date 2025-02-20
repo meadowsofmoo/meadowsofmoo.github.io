@@ -21,10 +21,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 /* Moo Logo */
 .moo-logo {
     position: absolute;
-    top: calc(50vh - 600px);
     max-width: 40vw;
     max-height: 12vh;
-    margin-bottom: 3vh;
+    margin-bottom: 5vh;
+    top: 2vh;
     z-index: 5;   
     overflow: hidden; 
     transition: transform 3s; 
@@ -42,13 +42,14 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 /* Text Container */
 body {
-    display: block;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
     min-height: 100vh;
     background-color: #ffe6f2;
     transition: background 0.3s ease;
+    flex-direction: column;
 }
 .container {
     background: #ffe0cf;
@@ -56,14 +57,14 @@ body {
     padding: 30px;
     margin: 40px auto;
     margin-top: 20vh;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
     border-radius: 15px;
     box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     font-family: "Pangolin", serif;
     font-style: normal;
     max-width: calc(100% - 250px); 
-    height: 875px;
+    height: 950px;
     transition: background 0.3s ease;
     overflow-x: hidden;
     overflow-y: scroll;
