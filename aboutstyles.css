@@ -222,5 +222,5 @@ body {
     font-size: 15px;
     color: #FFFFFF;
     text-align: center;
-    z-index: 4;
+    z-index: -1;
 }
