@@ -128,13 +128,26 @@ body {
 }
 
 /* Mobile Optimization */
-@media (max-width: 768px) {
+@media (max-height: 950px) {
     .container {
         max-width: 90%;
         min-height: auto;
         max-height: 90%;
         margin: auto;
         overflow: hidden;
+    }
+
+    .profile img {
+        display: none;
+    }
+
+    div#highest-combo {
+        display: none;
+    }
+
+    a#pfpcredit {
+        display: none;
+        font-size: 0px;
     }
 
     .profile h1 {
@@ -147,21 +160,98 @@ body {
         font-size: 16px;
     }
     
-    .links {
+    div.links {
         max-width: 100%;
         min-width: 200px;
     }
+
+    .link-button.link-button.link-button.spotify {
+        transition: background 0.5s, transform 0.3s, border-color 0.3s, filter 99999999s, box-shadow 0.5s ease-in-out; 
+    }
 }
 
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.2em;
+
+@media (max-height: 749px) {
+    .link-button.newgrounds {
+        padding: 8px 25px;
+    }
+    .link-button.link-button.youtube {
+        padding: 8px 25px;
     }
 
-    .link-button {
-        padding: 8px 16px;
-        font-size: 14px;
+    .link-button.link-button.link-button.latest {
+        padding: 8px 25px;
     }
+
+    .link-button.link-button.link-button.FLP {
+        padding: 8px 25px;
+    }
+
+    .link-button.link-button.link-button.link-button.twitter {
+        padding: 8px 25px;
+    }
+
+    .link-button.link-button.link-button.link-button.roblox {
+        padding: 8px 25px;
+    }
+
+    .link-button.link-button.link-button.link-button.soundcloud {
+        padding: 8px 25px;
+    }
+
+
+    .link-button.link-button.link-button.spotify {
+        display: none;
+        transition: background 0.5s, transform 0.3s, border-color 0.3s, filter 99999999s, box-shadow 0.5s ease-in-out; 
+    }
+
+    .notification {
+        display: none;
+    }
+
+    div.profile {
+        display: none;
+    }
+}
+
+@media (max-height: 500px) {
+    .link-button.newgrounds {
+        padding: 0px 25px;
+    }
+    .link-button.link-button.youtube {
+        padding: 0px 25px;
+    }
+
+    .link-button.link-button.link-button.latest {
+        padding: 0px 25px;
+    }
+
+    .link-button.link-button.link-button.FLP {
+        padding: 0px 25px;
+    }
+
+    .link-button.link-button.link-button.link-button.twitter {
+        padding: 0px 25px;
+    }
+
+    .link-button.link-button.link-button.link-button.roblox {
+        padding: 0px 25px;
+    }
+
+    .link-button.link-button.link-button.link-button.soundcloud {
+        padding: 0px 25px;
+    }
+
+
+    .link-button.link-button.link-button.spotify {
+        display: none;
+        transition: background 0.5s, transform 0.3s, border-color 0.3s, filter 99999999s, box-shadow 0.5s ease-in-out; 
+    }
+
+    div.profile {
+        display: none;
+    }
+
 }
 
 /*Profile Pic */
@@ -638,7 +728,7 @@ body {
 .mute-toggle:active,
 .mute-toggle:focus {
   animation: pushRelease 0.5s forwards;
-}        
+}  
 
 /*Copyright and Credit*/
 .copyright {
